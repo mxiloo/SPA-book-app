@@ -1,0 +1,21 @@
+.disabled {
+  transform: scale(0);
+  position: fixed;
+  transition: transform .1s linear;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 4;
+}
+
+.active {
+  composes: disabled;
+  transform: scale(1);
+}
+
+.modal {
+  background-color: #41688a;
+  //background-color: #5081ad;
+  border-radius: 8px;
+  padding: 25px;
+  //border: 1px solid rgba(204, 227, 241, 0.75);
+}
