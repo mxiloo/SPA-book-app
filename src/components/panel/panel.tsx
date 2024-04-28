@@ -6,17 +6,14 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import {useContext, useEffect, useState} from "react";
+import {useContext} from "react";
 import {MyContext} from "@/provider/my-context";
 
 export const color = {color: "rgb(225,231,241)"};
 
 const Panel = () => {
 
-    const {handleOpen} = useContext(MyContext);
-
-    const {year, setYear, books} = useContext(MyContext);
-
+    const {year, setYear, books, handleOpen} = useContext(MyContext);
     // console.log(year)
 
     const handleChange = (event: SelectChangeEvent) => {
