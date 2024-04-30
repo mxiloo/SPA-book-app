@@ -24,17 +24,17 @@ const Panel = () => {
     const sortedBooks = [...new Set(books.map(book => book.year))].sort((a, b) => b - a);
 
     return (
-        <section className={styles.container}>
+        <header className={styles.container}>
 
             <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Выберите год</InputLabel>
                 <Select
-                    style={color}
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     label="Выберите год"
                     value={year}
                     onChange={handleChange}
+                    className={styles.input}
                 >
                     <MenuItem value=""><em>Отчистить</em></MenuItem>
                     {sortedBooks.map((element, index) => (
@@ -50,7 +50,7 @@ const Panel = () => {
             >
                 Добавить
             </Button>
-        </section>
+        </header>
     )
 }
 

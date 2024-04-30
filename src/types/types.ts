@@ -6,7 +6,8 @@ export type TData = {
     year: number | undefined,
     rate: number | undefined,
     number?: string,
-    authorSecond?: string
+    authorSecond?: string,
+    image?: string
 }
 
 export type TModalProps = {

@@ -25,6 +25,8 @@ const Aplication = () => {
 
     const [number, setNumber] = useState<string>('');
 
+    const [image, setImage] = useState<string>('');
+
     const {handleNewBook, handleClose} = useContext(MyContext);
 
     const errorStyle = {color: "#e14e4e"};
@@ -38,13 +40,18 @@ const Aplication = () => {
         setNumber(e.target.value)
     };
 
+    const handleImage = (e) => {
+        setImage(e.target.value)
+    };
+
     let book = {
         title,
         author,
         secondAuthor,
         rate,
         number,
-        year
+        year,
+        image
     } as TData; // Объект с заполненными данными пользователя
 
     const clearState = () => {
@@ -106,6 +113,14 @@ const Aplication = () => {
                     <input className={styles.input} placeholder='Введите год выпуска' type='number' value={yearInput.value} onChange={e => yearInput.onChange(e)}/>
                     {yearInput.isEmpty && <span style={errorStyle}>Данное поле обязательно &#9650;</span>}
                     {yearInput.minYearError && <span style={errorStyle}>Минимальный год выпуска 1800</span>}
+                </li>
+                <li style={liStyle}>
+                    <div className={styles.box}>
+                        <span>Обложка</span>
+                        <span style={{opacity: "0.7"}}>(не обязательно)</span>
+                    </div>
+
+                    <input className={styles.input} placeholder='Вставьте ссылку на картинку / обложку произведения' value={image} onChange={handleImage}/>
                 </li>
             </ul>
 

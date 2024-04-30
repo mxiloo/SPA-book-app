@@ -9,6 +9,8 @@ import Aplication from "@/components/aplication/aplication";
 import MyContextProvider from "@/provider/my-context";
 import CircularProgress from '@mui/material/CircularProgress';
 import DeleteAplication from "@/components/delete-aplication/delete-aplication";
+import Recommendations from "@/components/recommendations/recommendations";
+import Preloader from "@/components/preloader/preloader";
 
 export default function Home() {
 
@@ -20,13 +22,15 @@ export default function Home() {
         <MyContextProvider setIsLoading={setIsLoading} setOpenAdd={setOpenAdd} setOpenDelete={setOpenDelete}>
 
             <main className={styles.main}>
-                {isLoading ? <CircularProgress /> : (
+                {isLoading ? <Preloader /> : (
                     <>
-                        <div className={styles.container}>
-                            <Panel />
-                            <Window />
+                        <Panel />
+                        <div className={styles.box}>
+                            <div className={styles.container}>
+                                <Window />
+                                <Recommendations />
+                            </div>
                         </div>
-
                         <Modal openAdd={openAdd} openDelete={openDelete}>
                             {openAdd && <Aplication />}
                             {openDelete && <DeleteAplication />}
