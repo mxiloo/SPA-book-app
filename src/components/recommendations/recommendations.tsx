@@ -1,15 +1,15 @@
-import {MyContext} from "@/provider/my-context";
 import {useContext, useEffect, useState} from "react";
 import Card from "@/components/card/card";
 import {TData} from "@/types/types";
 import styles from './recommendations.module.scss';
+import {WindowContext} from "@/provider/window-provider";
 
 
 const Recommendations = () => {
 
     const [randomBook, setRandomBook] = useState<TData>(null); // Рандомная книга
 
-    const {books} = useContext(MyContext);
+    const {books} = useContext(WindowContext);
 
     const yearNow = new Date().getFullYear(); // Текущий год
 

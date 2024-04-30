@@ -3,11 +3,15 @@ import styles from './delete-aplication.module.scss';
 import {Button} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import {useContext} from "react";
-import {MyContext} from "@/provider/my-context";
+import {WindowContext} from "@/provider/window-provider";
+import {ModalContext} from "@/provider/modal-provider";
+import {AplicationContext} from "@/provider/aplication-provider";
 
 const DeleteAplication = () => {
 
-    const {handleDeleteBook, elementId, handleClose} = useContext(MyContext);
+    const {elementId} = useContext(AplicationContext);
+    const {handleDeleteBook} = useContext(WindowContext);
+    const {handleClose} = useContext(ModalContext)
 
     return (
         <section className={styles.section}>

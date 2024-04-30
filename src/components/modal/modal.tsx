@@ -4,11 +4,11 @@ import styles from './modal.module.scss';
 import Overlay from "@/components/overlay/overlay";
 import {PropsWithChildren, useContext, useEffect} from "react";
 import {TModalProps} from "@/types/types";
-import {MyContext} from "@/provider/my-context";
+import {ModalContext} from "@/provider/modal-provider";
 
 const Modal = ({children, openAdd, openDelete}: PropsWithChildren) => {
 
-    const {handleClose}: TModalProps = useContext(MyContext);
+    const {handleClose}: TModalProps = useContext(ModalContext);
 
     const toggle = openAdd || openDelete ? `${styles.active}` : `${styles.disabled}`;
 

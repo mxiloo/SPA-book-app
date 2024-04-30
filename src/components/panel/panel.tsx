@@ -7,13 +7,17 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import {useContext} from "react";
-import {MyContext} from "@/provider/my-context";
+import {ModalContext} from "@/provider/modal-provider";
+import {WindowContext} from "@/provider/window-provider";
+import {HeaderContext} from "@/provider/header-provider";
 
 export const color = {color: "rgb(225,231,241)"};
 
 const Panel = () => {
 
-    const {year, setYear, books, handleOpen} = useContext(MyContext);
+    const {year, setYear} = useContext(HeaderContext);
+    const {books} = useContext(WindowContext)
+    const {handleOpen} = useContext(ModalContext);
     // console.log(year)
 
     const handleChange = (event: SelectChangeEvent) => {

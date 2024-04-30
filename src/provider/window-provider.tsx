@@ -1,15 +1,13 @@
-import {createContext, PropsWithChildren, useEffect, useState} from "react";
-import {TData} from "@/types/types";
-import {addDoc, collection, onSnapshot, deleteDoc, doc} from "@firebase/firestore";
+import {createContext, useEffect, useState} from "react";
+import {addDoc, collection, deleteDoc, doc, onSnapshot} from "@firebase/firestore";
 import database from "@/config/firebase";
+import {TData} from "@/types/types";
 
 
-export const MyContext = createContext<any>(undefined | true);
+export const WindowContext = createContext<any>(undefined);
 
-const MyContextProvider = ({children, setIsLoading, setOpenAdd, setOpenDelete}: PropsWithChildren) => {
-    const [elementId, setElementId] = useState<string>(''); // Стейт выбранного элемента
-    const [year, setYear] = useState<number | string>(''); // Год публикации
-    // console.log(year)
+const WindowProvider = ({children, setIsLoading}) => {
+
     const [books, setBooks] = useState<TData[]>([]); // Все книги
     // console.log(books)
 
@@ -38,26 +36,12 @@ const MyContextProvider = ({children, setIsLoading, setOpenAdd, setOpenDelete}: 
         await deleteDoc(bookCollectionRef)
     }; // Удаление книги
 
-    const handleOpen = () => setOpenAdd(true); // Открыть модалку добавления книги
-    const handleClose = () => {
-        setOpenAdd(false)
-        setOpenDelete(false)
-    }; // Закрыть модалку
+    return <WindowContext.Provider value={{
+        books,
+        handleNewBook,
+        handleDeleteBook,
+    }}>{children}</WindowContext.Provider>
 
-    return (
-        <MyContext.Provider value={{
-            handleOpen,
-            handleClose,
-            year, setYear,
-            books,
-            handleNewBook,
-            handleDeleteBook,
-            setOpenDelete,
-            elementId, setElementId
-        }}>
-            {children}
-        </MyContext.Provider>
-    )
 }
 
-export default MyContextProvider
+export default WindowProvider

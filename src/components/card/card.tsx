@@ -2,12 +2,14 @@ import styles from './card.module.scss';
 import {Rating} from "@mui/material";
 import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";
 import {useContext} from "react";
-import {MyContext} from "@/provider/my-context";
+import {ModalContext} from "@/provider/modal-provider";
+import {AplicationContext} from "@/provider/aplication-provider";
 
 
 const Card = ({element}) => {
 
-    const {setOpenDelete, setElementId} = useContext(MyContext);
+    const {setOpenDelete} = useContext(ModalContext);
+    const {setElementId} = useContext(AplicationContext);
 
     return (
         <div className={styles.card}>

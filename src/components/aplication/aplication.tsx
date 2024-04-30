@@ -1,11 +1,12 @@
 'use client';
 
 import styles from './aplication.module.scss';
-import {MyContext} from "@/provider/my-context";
 import {useContext, useState} from "react";
 import {Button} from "@mui/material";
 import {useInput} from "@/hooks/hooks";
 import {TData} from "@/types/types";
+import {ModalContext} from "@/provider/modal-provider";
+import {WindowContext} from "@/provider/window-provider";
 
 const Aplication = () => {
 
@@ -27,7 +28,8 @@ const Aplication = () => {
 
     const [image, setImage] = useState<string>('');
 
-    const {handleNewBook, handleClose} = useContext(MyContext);
+    const {handleNewBook} = useContext(WindowContext);
+    const {handleClose} = useContext(ModalContext);
 
     const errorStyle = {color: "#e14e4e"};
     const liStyle: object = {listStyle: "none", display: "flex", flexDirection: "column", gap: "8px", margin: "20px 0"};
