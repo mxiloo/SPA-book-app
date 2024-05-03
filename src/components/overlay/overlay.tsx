@@ -1,11 +1,12 @@
 import styles from './overlay.module.scss';
-import {TOverlayProps} from "@/types/types";
+import {TOverlayProps} from "@/components/overlay/overlay.types";
+import {ModalContext} from "@/provider/modal-provider";
 import {useContext} from "react";
-import {MyContext} from "@/provider/my-context";
 
-const Overlay = ({openAdd, openDelete}) => {
+const Overlay = () => {
 
-    const {handleClose}: TOverlayProps = useContext(MyContext);
+    const {openAdd, openDelete, handleClose} = useContext(ModalContext);
+
     const toggle = openAdd || openDelete ? `${styles.active}` : `${styles.disabled}`;
 
     return <section onClick={handleClose} className={toggle}></section>

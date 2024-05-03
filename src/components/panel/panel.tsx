@@ -6,17 +6,17 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import {useContext, useEffect, useState} from "react";
-import {MyContext} from "@/provider/my-context";
+import {useContext} from "react";
+import {WindowContext} from "@/provider/window-provider";
+import {HeaderContext} from "@/provider/header-provider";
+import {ModalContext} from "@/provider/modal-provider";
 
-export const color = {color: "rgb(225,231,241)"};
 
 const Panel = () => {
 
-    const {handleOpen} = useContext(MyContext);
-
-    const {year, setYear, books} = useContext(MyContext);
-
+    const {year, setYear} = useContext(HeaderContext);
+    const {books} = useContext(WindowContext);
+    const {handleOpen} = useContext(ModalContext);
     // console.log(year)
 
     const handleChange = (event: SelectChangeEvent) => {
@@ -27,17 +27,17 @@ const Panel = () => {
     const sortedBooks = [...new Set(books.map(book => book.year))].sort((a, b) => b - a);
 
     return (
-        <section className={styles.container}>
+        <header className={styles.container}>
 
             <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Выберите год</InputLabel>
                 <Select
-                    style={color}
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     label="Выберите год"
                     value={year}
                     onChange={handleChange}
+                    className={styles.input}
                 >
                     <MenuItem value=""><em>Отчистить</em></MenuItem>
                     {sortedBooks.map((element, index) => (
@@ -47,13 +47,13 @@ const Panel = () => {
             </FormControl>
 
             <Button
-                style={color}
+                style={{color: "rgb(225,231,241)"}}
                 variant="contained"
                 onClick={handleOpen}
             >
                 Добавить
             </Button>
-        </section>
+        </header>
     )
 }
 
