@@ -9,12 +9,14 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import {useContext} from "react";
 import {WindowContext} from "@/provider/window-provider";
 import {HeaderContext} from "@/provider/header-provider";
+import {ModalContext} from "@/provider/modal-provider";
 
 
-const Panel = ({handleOpen}) => {
+const Panel = () => {
 
     const {year, setYear} = useContext(HeaderContext);
-    const {books} = useContext(WindowContext)
+    const {books} = useContext(WindowContext);
+    const {handleOpen} = useContext(ModalContext);
     // console.log(year)
 
     const handleChange = (event: SelectChangeEvent) => {

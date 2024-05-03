@@ -9,6 +9,8 @@ const Recommendations = () => {
 
     const [randomBook, setRandomBook] = useState<TData>(null); // Рандомная книга
 
+    console.log('перерисовка рекомендаций')
+
     const {books} = useContext(WindowContext);
 
     const yearNow = new Date().getFullYear(); // Текущий год

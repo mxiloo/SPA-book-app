@@ -9,7 +9,7 @@ export const WindowContext = createContext<any>(undefined);
 const WindowProvider = ({children, setIsLoading}) => {
 
     const [books, setBooks] = useState<TData[]>([]); // Все книги
-    console.log(books)
+    // console.log(books)
 
     useEffect(() => {
 

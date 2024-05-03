@@ -2,6 +2,19 @@
 
 }
 
+.errorStyle {
+  color: #e14e4e;
+}
+
+.liStyle {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+
 .titles {
   display: flex;
   align-items: center;

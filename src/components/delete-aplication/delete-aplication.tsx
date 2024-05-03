@@ -5,11 +5,13 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {useContext} from "react";
 import {WindowContext} from "@/provider/window-provider";
 import {AplicationContext} from "@/provider/aplication-provider";
+import {ModalContext} from "@/provider/modal-provider";
 
-const DeleteAplication = ({handleClose}) => {
+const DeleteAplication = () => {
 
     const {elementId} = useContext(AplicationContext);
     const {handleDeleteBook} = useContext(WindowContext);
+    const {handleClose} = useContext(ModalContext);
 
     return (
         <section className={styles.section}>
