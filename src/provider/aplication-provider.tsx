@@ -6,7 +6,7 @@ export const AplicationContext = createContext<any>(undefined);
 const AplicationProvider = ({children}) => {
 
     const [elementId, setElementId] = useState<string>(''); // Стейт выбранного элемента
-    console.log(elementId)
+    // console.log(elementId)
 
     return <AplicationContext.Provider value={{elementId, setElementId}}>{children}</AplicationContext.Provider>
 }

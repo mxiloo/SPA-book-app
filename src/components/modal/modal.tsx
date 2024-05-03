@@ -2,13 +2,11 @@
 
 import styles from './modal.module.scss';
 import Overlay from "@/components/overlay/overlay";
-import {PropsWithChildren, useContext, useEffect} from "react";
-import {TModalProps} from "@/types/types";
-import {ModalContext} from "@/provider/modal-provider";
+import {useEffect} from "react";
+import {TModalProps} from "@/components/modal/modal.types";
 
-const Modal = ({children, openAdd, openDelete}: PropsWithChildren) => {
 
-    const {handleClose}: TModalProps = useContext(ModalContext);
+const Modal = ({children, openAdd, openDelete, handleClose}: TModalProps) => {
 
     const toggle = openAdd || openDelete ? `${styles.active}` : `${styles.disabled}`;
 
@@ -30,7 +28,7 @@ const Modal = ({children, openAdd, openDelete}: PropsWithChildren) => {
                 </div>
             </section>
 
-            <Overlay openAdd={openAdd} openDelete={openDelete}/>
+            <Overlay openAdd={openAdd} openDelete={openDelete} handleClose={handleClose}/>
 
         </>
     )

@@ -6,7 +6,7 @@ import Card from "@/components/card/card";
 import {HeaderContext} from "@/provider/header-provider";
 import {WindowContext} from "@/provider/window-provider";
 
-const Window = () => {
+const Window = ({setOpenDelete}) => {
 
     const {year} = useContext(HeaderContext);
     const {books} = useContext(WindowContext);
@@ -19,7 +19,7 @@ const Window = () => {
             <h3 style={{marginBottom: "10px"}}>Книги:</h3>
             <div className={styles.container}>
                 {filteredBooks.map(element => (
-                    <Card key={element.id} element={element} />
+                    <Card key={element.id} element={element} setOpenDelete={setOpenDelete} showDeleteIcon={true}/>
                 ))}
             </div>
         </section>
