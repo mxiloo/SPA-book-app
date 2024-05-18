@@ -23,11 +23,11 @@ export default function Home() {
                         <Panel/>
                         <div className={styles.box}>
                             <div className={styles.container}>
-                                <Window/>
                                 <Recommendations/>
+                                <Window />
                             </div>
                         </div>
-                        <Modal />
+                        <Modal/>
                     </>
                 )}
             </main>

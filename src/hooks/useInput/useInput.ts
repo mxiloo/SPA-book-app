@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import {number} from "prop-types";
 
 const useValidation = (value, validations) => {
     const [isEmpty, setIsEmpty] = useState(true);
@@ -24,7 +23,7 @@ const useValidation = (value, validations) => {
                     break;
 
                 case 'isNumber':
-                    (value >= 1 && value <= 5) ? setIsNumberError(false) : setIsNumberError(true);
+                    (value >= 1 && value <= 10) ? setIsNumberError(false) : setIsNumberError(true);
                     break;
             }
         }

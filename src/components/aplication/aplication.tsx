@@ -18,7 +18,7 @@ const Aplication = () => {
     const authorInput = useInput<string>('', {isEmpty: true});
     const author = authorInput.value;
 
-    const rateInput = useInput<string>('', {isEmpty: true, isNumber: true});
+    const rateInput = useInput<string>('0', {isEmpty: true, isNumber: true});
     const rate = rateInput.value;
 
     const yearInput = useInput<string>('', {isEmpty: true, minYear: 1800});
@@ -95,7 +95,7 @@ const Aplication = () => {
                     <span>Оценка</span>
                     <input className={styles.input} placeholder='Введите число' type='number' value={rateInput.value} onChange={e => rateInput.onChange(e)}/>
                     {rateInput.isEmpty && <span className={styles.errorStyle}>Данное поле обязательно &#9650;</span>}
-                    {rateInput.isNumberError && <span className={styles.errorStyle}>Необходимо вводить числа от 1 до 5</span>}
+                    {rateInput.isNumberError && <span className={styles.errorStyle}>Необходимо вводить числа от 1 до 10</span>}
                 </li>
                 <li className={styles.liStyle}>
                     <div className={styles.box}>
@@ -114,14 +114,14 @@ const Aplication = () => {
                     {yearInput.isEmpty && <span className={styles.errorStyle}>Данное поле обязательно &#9650;</span>}
                     {yearInput.minYearError && <span className={styles.errorStyle}>Минимальный год выпуска 1800</span>}
                 </li>
-                <li className={styles.liStyle}>
-                    <div className={styles.box}>
-                        <span>Обложка</span>
-                        <span style={{opacity: "0.7"}}>(не обязательно)</span>
-                    </div>
+                {/*<li className={styles.liStyle}>*/}
+                {/*    <div className={styles.box}>*/}
+                {/*        <span>Обложка</span>*/}
+                {/*        <span style={{opacity: "0.7"}}>(не обязательно)</span>*/}
+                {/*    </div>*/}
 
-                    <input className={styles.input} placeholder='Вставьте ссылку на картинку / обложку произведения' value={image} onChange={handleImage}/>
-                </li>
+                {/*    <input className={styles.input} placeholder='Вставьте ссылку на картинку / обложку произведения' value={image} onChange={handleImage}/>*/}
+                {/*</li>*/}
             </ul>
 
             <Button variant="contained"

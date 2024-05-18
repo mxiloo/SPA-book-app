@@ -11,7 +11,8 @@
     max-width: 1240px;
     margin: 0 auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
     background-color: #182b41;
     padding: 25px;

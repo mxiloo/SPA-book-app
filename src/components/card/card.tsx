@@ -26,10 +26,15 @@ const Card = ({element, setOpenDelete, showDeleteIcon}: TData) => {
                         Автор: {element?.author}
                         {element?.secondAuthor ? <span>, {element?.secondAuthor}</span> : null}
                     </span>
+                    <span>Год выпуска: {element.year}</span>
+                    {element?.number && (
+                        <span>ISBN: {element?.number}</span>
+                    )}
                 </div>
 
                 <div className={styles.rate}>
-                    <Rating name="half-rating" defaultValue={element?.rate} precision={0.5} readOnly />
+                    <span>Оценка: {element?.rate}</span>
+                    {/*<Rating name="half-rating" defaultValue={element?.rate} precision={0.5} readOnly />*/}
 
                     {showDeleteIcon && (
                         <button className={styles.delete} onClick={() => {

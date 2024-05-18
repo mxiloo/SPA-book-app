@@ -9,27 +9,26 @@ const Recommendations = () => {
 
     const [randomBook, setRandomBook] = useState<TData>(null); // Рандомная книга
 
-    console.log('перерисовка рекомендаций')
+    // console.log('перерисовка рекомендаций')
 
     const {books} = useContext(WindowContext);
 
     const yearNow = new Date().getFullYear(); // Текущий год
 
-    const filteredBooks = books.filter(element => element.year >= yearNow - 3); // Книга издана не менее 3 лет назад
+    const filteredBooks = books.filter(element => element.year < yearNow - 3); // Книга издана не менее 3 лет назад
 
     const findBooksByRating = (books, startRating) => {
-        let currentRating = startRating;
-        while (currentRating >= 0) {
-            const booksWithRating = books.filter(book => book.rate === currentRating);
+        while (startRating >= 0) {
+            const booksWithRating = books.filter(book => book.rate === startRating);
             if (booksWithRating.length > 0) {
                 return booksWithRating;
             }
-            currentRating--;
+            startRating--;
         }
         return [];
     }; // Функция для поиска книг с постепенным уменьшением рейтинга
 
-    const sortedBooks = findBooksByRating(filteredBooks, 5); // Используем функцию для поиска книг с рейтингом 5 и выше
+    const sortedBooks = findBooksByRating(filteredBooks, 10); // Используем функцию для поиска книг с рейтингом 5 и выше
     const random = Math.floor(Math.random() * sortedBooks.length); // Берем рандомный индекс из массива
 
     useEffect(() => {

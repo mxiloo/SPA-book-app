@@ -13,15 +13,33 @@ const Window = () => {
     const {books} = useContext(WindowContext);
     const {setOpenDelete} = useContext(ModalContext);
 
-    const filteredBooks = year === '' ? books.sort((a, b) => b.year - a.year)
-        : books.filter(element => element.year === year).sort((a, b) => a.title.localeCompare(b.title));
+    // Группировка книг по годам
+    const booksByYear = books.reduce((key, book) => {
+        if (!key[book.year]) {
+            key[book.year] = [];
+        }
+        key[book.year].push(book);
+        return key;
+    }, {});
+
+    // Сортировка годов по убыванию
+    const sortedYears = Object.keys(booksByYear).sort((a, b) => b - a);
 
     return (
         <section className={styles.box}>
             <h3 className={styles.title}>Книги:</h3>
             <div className={styles.container}>
-                {filteredBooks.map(element => (
-                    <Card key={element.id} element={element} setOpenDelete={setOpenDelete} showDeleteIcon={true}/>
+                {sortedYears.map(element => (
+                    <div key={element} className={year !== '' && year != element ? styles.hidden : undefined}>
+                        <h2 className={year !== '' ? styles.hidden : undefined}>{element}</h2>
+                        <div className={styles.visible}>
+                            {booksByYear[element].map(book => (
+                                <div key={book.id} className={styles.card}>
+                                    <Card element={book} setOpenDelete={setOpenDelete} showDeleteIcon={true}/>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 ))}
             </div>
         </section>
